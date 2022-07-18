@@ -143,3 +143,6 @@ order by case day
         when 'saturday' then 6
         when 'sunday' then 7
     end;
+    
+    select job_id
+    from employees;

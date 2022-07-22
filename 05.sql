@@ -31,7 +31,7 @@ from employees;
 --과제]조직의 평균 커미션율을 조회하라 .
 
 select avg(nvl(commission_pct, 0))
-from employees;
+from employees;-
 
 ------------------------------
 

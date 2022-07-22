@@ -1,65 +1,91 @@
-select * from departments;
-
-select department_id, location_id
-from departments;
-
-select location_id, department_id
-from departments;
-
-desc departments
-
-desc employees
-
-select last_name, salary, salary + 300
+select salary, salary*12
 from employees;
 
-select last_name, salary, salary*12
+select last_name, job_id
+ from employees;
+ 
+select last_name, salary
+from employees
+where salary >= 12000;
+
+select last_name, salary
+from employees
+where salary >= 12000;
+
+select last_name, hire_date
+ from employees
+ where hire_date like '2005%';
+ 
+ select last_name, hire_date
+from employees
+where hire_date like '2005%';
+
+
+ select last_name, hire_date
+ from employees
+ where hire_date like '2005%';
+ 
+ select last_name
+from employees
+where last_name like '%o%';
+
+select last_name, salary, department_id
+from employees
+where (salary between 5000 and 12000) and department_id in (20, 50);
+
+select last_name, job_id, salary
+  from employees
+  where salary is not between(2500, 3500);
+  
+   select last_name, job_id, salary
+  from employees
+  where salary not between 2500, 3500;
+  
+  select last_name, job_id, salary
+  from employees
+  where job_id like ¡®%SA%¡¯ and salary not in 2500, 3500;
+  
+  select last_name, job_id, salary
+from employees
+where job_id like '%SA%' and salary not in (2500, 3500);
+
+select initcap(last_name), length(last_name)
+from employees
+where last_name like 'J%' or
+       last_name like 'A%' or
+       last_name like 'M%';
+       
+select last_name, hire_date, to_char(hire_date, fmyear)year
+from employees
+when hire_date >;
+
+select avg(commission_pct)
 from employees;
 
-select last_name, salary, 12*salary + 100
+select count(manager_id)
+from employees;  
+
+select manager_id, min(salary)
+from employees
+where manager_id is not null
+group by manager_id
+having min(salary) > 6000;
+
+
+
+
+select e.last_name, e.job_id, e.department_id, d.department_name, l.city
+from employees e, departments d, locations l
+where l.city = 'Toronto';
+
+select last_name, job_id, salary*12
 from employees;
 
-select last_name, salary, 12*(salary+100)
-from employees;
 
-select last_name, job_id, commission_pct
-from employees;
-
-select last_name, job_id, 12*salary+(12*salary*commission_pct)
-from employees;
-
-select last_name as name, commission_pct comm
-from employees;
-
-select last_name"Name", salary*12"Annual Salary"
-from employees;
-
-select employee_id, last_name, job_id, hire_date as startdate
-from employees;
-
-select employee_id"EMP #", last_name"Name", job_id"Job", hire_date
-from employees;
-
-select last_name || job_id
-from employees;
-
-select last_name|| ' is a ' || job_id
-from employees;
-
-select last_name || ' is a ' || job_id employee
-from employees;
-
-select last_name || null
-from employees;
-
-select last_name || commission_pct
-from employees;
-
-select last_name || salary
-from employees;
-
-select last_name || (salary*12)
-from employees;
-
-select last_name || job_id "EMP and Title"
-from employees;
+select last_name, hire_date
+from employees
+where department_id = (select department_id
+from employees
+where last_name = 'Abel')
+and last_name <> 'Abel'
+order by 1;

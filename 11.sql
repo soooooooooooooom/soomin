@@ -158,4 +158,8 @@ select * from team;
 create synonym emps
 for employees;
 
-select * from emps
+select * from emps;
+
+alter table posts rename column post_contesnt to post_content;
+
+commit;
